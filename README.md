@@ -28,38 +28,6 @@ Test wallet used in video: https://solscan.io/account/GZfUUWppX8dmC8BCkKG1wfMvUA
 
 ## Example flow
 
-```
-const connection = new Connection("https://mainnet.helius-rpc.com/?api-key=???", "confirmed")
-  const wallet = new PublicKey("7mFgFYwqGBNJcKRYdjeH9WoLKiAsjxnM6D7eKV1CnRfb")
-  const { mint, tx: serializedTx } = await makeCreationTx()
-  const txBuffer = Buffer.from(serializedTx, "base64");
-  const versionedTx = VersionedTransaction.deserialize(txBuffer);
-
-  const lookupTableAccounts: AddressLookupTableAccount[] = await Promise.all(
-    versionedTx.message.addressTableLookups.map(async (lookup) => {
-      const accountInfo = await connection.getAccountInfo(lookup.accountKey);
-      return new AddressLookupTableAccount({
-        key: lookup.accountKey,
-        state: AddressLookupTableAccount.deserialize(accountInfo!.data),
-      });
-    })
-  );
-
-  const decompiledMessage = TransactionMessage.decompile(
-    versionedTx.message,
-    { addressLookupTableAccounts: lookupTableAccounts }
-  );
-
-  const { blockhash } = await connection.getLatestBlockhash();
-  const compiledV0 = new TransactionMessage({
-    payerKey: decompiledMessage.payerKey,        // keep original fee payer
-    recentBlockhash: blockhash,           // refresh blockhash
-    instructions: decompiledMessage.instructions // resolved TransactionInstruction[]
-  }).compileToV0Message(lookupTableAccounts);
-
-  const vTx = new VersionedTransaction(compiledV0);
-
-```
 
 
 <img width="1125" height="246" alt="image" src="https://github.com/user-attachments/assets/d6264b67-1b7c-4144-8737-198b1ad18770" />
