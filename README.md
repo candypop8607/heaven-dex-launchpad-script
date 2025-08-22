@@ -29,8 +29,6 @@ Test wallet used in video: https://solscan.io/account/GZfUUWppX8dmC8BCkKG1wfMvUA
 ## Example flow
 
 
-
-<img width="1125" height="246" alt="image" src="https://github.com/user-attachments/assets/d6264b67-1b7c-4144-8737-198b1ad18770" />
 <img width="813" height="868" alt="image" src="https://github.com/user-attachments/assets/cea78dce-bac1-4afb-8240-8c1838d02c7f" />
 <img width="734" height="926" alt="image" src="https://github.com/user-attachments/assets/86a30c7d-3c90-4a3f-b713-983d286cdd76" />
 
